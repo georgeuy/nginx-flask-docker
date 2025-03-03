@@ -1,0 +1,19 @@
+version: "3"
+services:
+    frontend:
+        build:
+            context: ./frontend
+        ports:
+            - 5000
+
+    nginx:
+        build:
+            context: ./nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+          - "./nginx/certs:/etc/nginx/ssl:ro"
+          - "./nginx/conf.d:/etc/nginx/conf.d:ro"
+        depends_on:
+            - frontend
