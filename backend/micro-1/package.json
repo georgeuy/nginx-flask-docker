@@ -1,0 +1,18 @@
+{
+  "name": "micro-1",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon ./src",
+    "build": "vite build",
+    "preview": "node ./src"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

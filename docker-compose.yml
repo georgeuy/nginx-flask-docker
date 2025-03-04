@@ -3,8 +3,23 @@ services:
     frontend:
         build:
             context: ./frontend
-        ports:
+        expose:
             - 5000
+        networks:
+            - proxy
+            - internal  # Solo accesible para micros
+        restart: always
+
+
+    micro-1:
+        build:
+            context: ./backend/micro-1
+        expose:
+            - 3001
+        networks:
+            - internal  # Solo accesible para frontend
+        restart: always
+
 
     nginx:
         build:
@@ -17,3 +32,12 @@ services:
           - "./nginx/conf.d:/etc/nginx/conf.d:ro"
         depends_on:
             - frontend
+        networks:
+          - proxy
+        restart: always
+
+networks:
+  proxy:
+    driver: bridge
+  internal:
+    internal: true  #Red interna, inaccesible desde fuera
