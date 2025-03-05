@@ -1,0 +1,13 @@
+<h1>Nuevo Producto</h1>
+
+{% if error %}
+    <p>{{error}}</p>
+{% endif %}
+
+<form method="post">
+    <input type="text" name="product_id" value="{{data.id}}">
+    <br>
+    <input type="text" name="product_name", value="{{data.name}}">
+    <br>
+    <button type="submit">Nuevo Producto</button>
+</form>

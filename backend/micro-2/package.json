@@ -13,7 +13,6 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
-    "express": "^4.21.2",
-    "nats": "^2.29.2"
+    "express": "^4.21.2"
   }
 }

@@ -15,9 +15,31 @@ services:
         build:
             context: ./backend/micro-1
         expose:
-            - 3001
+            - 3000
         networks:
-            - internal  # Solo accesible para frontend
+            - internal  # Solo accesible para frontend and micros
+        restart: always
+
+
+    micro-2:
+        build:
+            context: ./backend/micro-2
+        expose:
+            - 3000
+        networks:
+            - internal  # Solo accesible para frontend and micros
+        restart: always
+
+
+    nats:
+        image: nats:alpine
+        expose:
+            - 4222
+        networks:
+            - internal  # Solo accesible para frontend and micros
+        depends_on:
+            - micro-1
+            - micro-2
         restart: always
 
 

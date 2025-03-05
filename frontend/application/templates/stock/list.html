@@ -1,0 +1,12 @@
+<h1>Listado de Stock</h1>
+
+{% if error %}
+    <p>{{error}}</p>
+{% endif %}
+
+<ul>
+    {% for d in data %}
+        <li>{{d.name}}</li>
+    {% endfor %} 
+</ul>
+
